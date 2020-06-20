@@ -4,6 +4,7 @@ import { useUser } from "../utils/auth/useUser";
 import LandingPage from "../components/LandingPage";
 import Nav from "../components/nav";
 import Footer from "../components/Footer";
+import Layout from "../components/layout";
 
 const fetcher = (url, token) =>
   fetch(url, {
@@ -22,16 +23,14 @@ const Index = () => {
   // User is not logged in, return landing page
   if (!user) {
     return (
-      <>
-        <Nav />
+      <Layout>
         <LandingPage />
-        <Footer />
-      </>
+      </Layout>
     );
   }
 
   return (
-    <div>
+    <Layout>
       <div>
         <p>
           You're signed in. Email:
@@ -62,7 +61,7 @@ const Index = () => {
           .
         </div>
       )}
-    </div>
+    </Layout>
   );
 };
 

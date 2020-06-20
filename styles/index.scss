@@ -5,6 +5,7 @@
 @import "./colors.scss";
 @import "./nav.scss";
 @import "./buttons.scss";
+@import "./forms.scss";
 
 @font-face {
   font-family: "Apercu";
@@ -49,6 +50,10 @@ a:hover {
   width: 40vw;
   margin-top: 4rem;
   align-items: center;
+}
+
+.click {
+  cursor: pointer !important;
 }
 
 /* purgecss end ignore */

@@ -7,9 +7,11 @@ class Nav extends Component {
     return (
       <nav className="flex navbar-dark p-2">
         <Link href="/" className="logo-link">
-          <img src={Beer} alt="logo" className="logo" />
+          <div className="inline-flex click">
+            <img src={Beer} alt="logo" className="logo" />
+            <h1 className="pt-2 white text-3xl">DrinksPerWeek</h1>
+          </div>
         </Link>
-        <h1 className="pt-2 white text-3xl">DrinksPerWeek</h1>
       </nav>
     );
   }

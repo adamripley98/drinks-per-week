@@ -15,7 +15,7 @@ class LandingPage extends Component {
               Reward yourself with alcohol only when you're meeting your fitness
               goals.
             </h2>
-            <Link href="/register">
+            <Link href="/auth">
               <button type="button" className="btn-purple mt-4">
                 TRY NOW
               </button>
