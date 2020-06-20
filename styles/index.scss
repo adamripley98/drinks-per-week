@@ -1,0 +1,50 @@
+/* purgecss start ignore */
+
+@import "./colors.scss";
+@import "./nav.scss";
+@import "./buttons.scss";
+
+@font-face {
+  font-family: "Apercu";
+  src: url("../public/fonts/Apercu_Regular.otf") format("woff"); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: "Apercu Bold";
+  src: url("../public/fonts/Apercu Bold.otf") format("woff"); /* Pretty Modern Browsers */
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background: white;
+  font-family: "Apercu" !important;
+  min-height: 100vh;
+  position: relative;
+}
+
+h1 {
+  font-family: "Apercu Bold" !important;
+}
+
+a {
+  color: $purple;
+}
+
+a:hover {
+  color: $dark-purple;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+  overflow: hidden;
+}
+
+.center-form {
+  width: 40vw;
+  margin-top: 4rem;
+  align-items: center;
+}

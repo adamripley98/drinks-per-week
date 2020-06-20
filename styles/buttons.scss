@@ -1,0 +1,24 @@
+button,
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  position: relative;
+}
+
+.btn-purple {
+  background: $purple;
+  width: 12rem;
+  height: auto;
+  border: none;
+  color: white;
+  border-radius: 1.625rem;
+  padding: 0.725rem 0rem;
+  font-size: 1.25rem;
+  font-family: "Apercu Bold";
+  letter-spacing: 0.15rem;
+  transition: 0.35s;
+}
+
+.btn-purple:hover {
+  background: $dark-purple;
+}
