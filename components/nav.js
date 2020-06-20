@@ -6,7 +6,7 @@ class Nav extends Component {
   render() {
     return (
       <nav className="flex navbar-dark p-2">
-        <Link href="/" className="logo-link">
+        <Link href="/">
           <div className="inline-flex click">
             <img src={Beer} alt="logo" className="logo" />
             <h1 className="pt-2 white text-3xl">DrinksPerWeek</h1>
