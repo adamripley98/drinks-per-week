@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useUser } from "../utils/auth/useUser";
 import LandingPage from "../components/LandingPage";
 import Nav from "../components/nav";
+import Footer from "../components/Footer";
 
 const fetcher = (url, token) =>
   fetch(url, {
@@ -24,6 +25,7 @@ const Index = () => {
       <>
         <Nav />
         <LandingPage />
+        <Footer />
       </>
     );
   }

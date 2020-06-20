@@ -1,4 +1,6 @@
 /* purgecss start ignore */
+@tailwind base;
+@tailwind components;
 
 @import "./colors.scss";
 @import "./nav.scss";
@@ -38,7 +40,7 @@ a:hover {
 
 .footer {
   position: absolute;
-  bottom: 0;
+  bottom: 0.5rem;
   right: 1rem;
   overflow: hidden;
 }
@@ -48,3 +50,6 @@ a:hover {
   margin-top: 4rem;
   align-items: center;
 }
+
+/* purgecss end ignore */
+@tailwind utilities;

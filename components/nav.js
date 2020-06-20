@@ -5,11 +5,11 @@ import Beer from "../public/images/beer.png";
 class Nav extends Component {
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark">
+      <nav className="flex navbar-dark p-2">
         <Link href="/" className="logo-link">
           <img src={Beer} alt="logo" className="logo" />
         </Link>
-        <h1 className="mr-auto pt-2 white">DrinksPerWeek</h1>
+        <h1 className="pt-2 white text-3xl">DrinksPerWeek</h1>
       </nav>
     );
   }
