@@ -1,4 +1,5 @@
 import { verifyIdToken } from "../../utils/auth/firebaseAdmin";
+import firebase from "../../utils/auth/initFirebase";
 
 const userOnboarding = async (req, res) => {
   if (req.method === "POST") {
@@ -12,7 +13,7 @@ const userOnboarding = async (req, res) => {
     }
   } else {
     // TODO error handle for other routes
-    return res.status(400).send("This is a post route");
+    return res.status(400).send("You are unauthorized");
   }
 };
 

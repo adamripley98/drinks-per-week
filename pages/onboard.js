@@ -3,7 +3,6 @@ import Layout from "../components/layout";
 import Form1 from "../components/onboarding/Form1";
 import Form2 from "../components/onboarding/Form2";
 import Form3 from "../components/onboarding/Form3";
-import ProtectedPage from "../components/ProtectedPage";
 import { useUser } from "../utils/auth/useUser";
 import postRequest from "../utils/routes/post";
 import { USER_ONBOARDING } from "../utils/routes/routeNames";
@@ -15,11 +14,11 @@ function Onboard() {
     activeTab: 1,
     firstName: "",
     lastName: "",
-    currentWeight: null,
-    upperWeight: null,
-    lowerWeight: null,
-    baselineDrinks: null,
-    addedDrinks: null,
+    currentWeight: "",
+    upperWeight: "",
+    lowerWeight: "",
+    baselineDrinks: "",
+    addedDrinks: "",
     drinkCarryOver: false,
     penalties: {}
   });
@@ -83,6 +82,7 @@ function Onboard() {
 
   function submitOnboard() {
     postRequest(USER_ONBOARDING, state, user.token);
+    // TODO Redirect to home page
   }
 
   function showCorrectTab() {
@@ -134,17 +134,14 @@ function Onboard() {
 
   return (
     <Layout>
-      <ProtectedPage>
-        <h1 className="text-3xl lg:text-4xl xl:text-5xl text-center">
-          Welcome to DrinksPerWeek!
-        </h1>
-        <p className="text-l lg:text-xl xl:text-2xl text-center mb-10">
-          We just need a bit more information from you before you can get
-          started.
-        </p>
-        {showCorrectTab()}
-        {showButtons()}
-      </ProtectedPage>
+      <h1 className="text-3xl lg:text-4xl xl:text-5xl text-center">
+        Welcome to DrinksPerWeek!
+      </h1>
+      <p className="text-l lg:text-xl xl:text-2xl text-center mb-10">
+        We just need a bit more information from you before you can get started.
+      </p>
+      {showCorrectTab()}
+      {showButtons()}
     </Layout>
   );
 }

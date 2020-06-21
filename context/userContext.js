@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
-import firebase from "../firebase/clientApp";
+import { firebase } from "../utils/auth/initFirebase";
 
 export const UserContext = createContext();
 
@@ -17,9 +17,13 @@ export default function UserContextComp({ children }) {
           // You could also look for the user doc in your Firestore (if you have one):
           // const userDoc = await firebase.firestore().doc(`users/${uid}`).get()
           setUser({ uid, displayName, email, photoURL });
-        } else setUser(null);
+        } else {
+          console.log("Error with setting User");
+          setUser(null);
+        }
       } catch (error) {
-        // Most probably a connection error. Handle appropriately.
+        console.log(error);
+        // TODO Most probably a connection error. Handle appropriately.
       } finally {
         setLoadingUser(false);
       }

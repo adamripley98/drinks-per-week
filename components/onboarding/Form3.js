@@ -43,7 +43,7 @@ const Form3 = (props) => {
                       penalties.daysInARowMissed &&
                       penalties.daysInARowMissed.enabled
                         ? penalties.daysInARowMissed.daysInARowMissedValue
-                        : null
+                        : ""
                     }
                   />
                 </div>
@@ -66,7 +66,7 @@ const Form3 = (props) => {
                       penalties.daysInARowMissed &&
                       penalties.daysInARowMissed.enabled
                         ? penalties.daysInARowMissed.daysInARowMissedPenalty
-                        : null
+                        : ""
                     }
                   />
                 </div>
@@ -109,7 +109,7 @@ const Form3 = (props) => {
                       penalties.daysInAWeekMissed &&
                       penalties.daysInAWeekMissed.enabled
                         ? penalties.daysInAWeekMissed.daysInAWeekMissedValue
-                        : null
+                        : ""
                     }
                   />
                 </div>
@@ -132,7 +132,7 @@ const Form3 = (props) => {
                       penalties.daysInAWeekMissed &&
                       penalties.daysInAWeekMissed.enabled
                         ? penalties.daysInAWeekMissed.daysInAWeekMissedPenalty
-                        : null
+                        : ""
                     }
                   />
                 </div>
@@ -175,7 +175,7 @@ const Form3 = (props) => {
                       penalties.daysInAWeekLimit &&
                       penalties.daysInAWeekLimit.enabled
                         ? penalties.daysInAWeekLimit.daysInAWeekLimitValue
-                        : null
+                        : ""
                     }
                   />
                 </div>
@@ -198,7 +198,7 @@ const Form3 = (props) => {
                       penalties.daysInAWeekLimit &&
                       penalties.daysInAWeekLimit.enabled
                         ? penalties.daysInAWeekLimit.daysInAWeekLimitPenalty
-                        : null
+                        : ""
                     }
                   />
                 </div>

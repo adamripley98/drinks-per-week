@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cookies from "js-cookie";
-import firebase from "firebase/app";
-import "firebase/auth";
-import initFirebase from "./initFirebase";
+import { firebase, initFirebase } from "./initFirebase";
 
 initFirebase();
 
@@ -28,7 +26,7 @@ const useUser = () => {
   useEffect(() => {
     const cookie = cookies.get("auth");
     if (!cookie) {
-      router.push("/");
+      router.push("/unauthorized");
       return;
     }
     setUser(JSON.parse(cookie));
