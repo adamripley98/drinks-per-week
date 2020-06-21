@@ -1,23 +1,16 @@
 import React, { useState } from "react";
-import useSWR from "swr";
 import Layout from "../components/layout";
 import Form1 from "../components/onboarding/Form1";
 import Form2 from "../components/onboarding/Form2";
 import Form3 from "../components/onboarding/Form3";
 import ProtectedPage from "../components/ProtectedPage";
 import { useUser } from "../utils/auth/useUser";
-
-const fetcher = (url, token) =>
-  fetch(url, {
-    method: "POST",
-    headers: new Headers({ "Content-Type": "application/json", token }),
-    credentials: "same-origin"
-  }).then((res) => {
-    console.log("post request done");
-    console.log(res.json());
-  });
+import postRequest from "../utils/routes/post";
+import { USER_ONBOARDING } from "../utils/routes/routeNames";
 
 function Onboard() {
+  const { user } = useUser();
+
   const [state, setState] = useState({
     activeTab: 1,
     firstName: "",
@@ -89,7 +82,7 @@ function Onboard() {
   }
 
   function submitOnboard() {
-    console.log("TODO: submit to backend", state);
+    postRequest(USER_ONBOARDING, state, user.token);
   }
 
   function showCorrectTab() {
