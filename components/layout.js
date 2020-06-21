@@ -12,10 +12,10 @@ export default function Layout({ children }) {
   useEffect(() => {
     if (!loadingUser) {
       // You know that the user is loaded: either logged in or out!
-      console.log(user);
+      console.log("user", user);
     }
     // You also have your firebase app initialized
-    console.log(firebase);
+    console.log("firebase", firebase);
   }, [loadingUser, user]);
 
   return (

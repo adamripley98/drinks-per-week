@@ -14,7 +14,9 @@ const Form3 = (props) => {
               onChange={props.handleChange}
               name="daysInARowMissedEnabled"
               checked={
-                penalties.daysInARowMissed && penalties.daysInARowMissed.enabled
+                penalties &&
+                penalties.daysInARowMissed &&
+                penalties.daysInARowMissed.enabled
                   ? penalties.daysInARowMissed.enabled
                   : false
               }
@@ -37,6 +39,7 @@ const Form3 = (props) => {
                     onChange={props.handleChange}
                     name="daysInARowMissedValue"
                     value={
+                      penalties &&
                       penalties.daysInARowMissed &&
                       penalties.daysInARowMissed.enabled
                         ? penalties.daysInARowMissed.daysInARowMissedValue
@@ -59,6 +62,7 @@ const Form3 = (props) => {
                     onChange={props.handleChange}
                     name="daysInARowMissedPenalty"
                     value={
+                      penalties &&
                       penalties.daysInARowMissed &&
                       penalties.daysInARowMissed.enabled
                         ? penalties.daysInARowMissed.daysInARowMissedPenalty
@@ -76,6 +80,7 @@ const Form3 = (props) => {
               onChange={props.handleChange}
               name="daysInAWeekMissedEnabled"
               checked={
+                penalties &&
                 penalties.daysInAWeekMissed &&
                 penalties.daysInAWeekMissed.enabled
                   ? penalties.daysInAWeekMissed.enabled
@@ -100,6 +105,7 @@ const Form3 = (props) => {
                     onChange={props.handleChange}
                     name="daysInAWeekMissedValue"
                     value={
+                      penalties &&
                       penalties.daysInAWeekMissed &&
                       penalties.daysInAWeekMissed.enabled
                         ? penalties.daysInAWeekMissed.daysInAWeekMissedValue
@@ -122,6 +128,7 @@ const Form3 = (props) => {
                     onChange={props.handleChange}
                     name="daysInAWeekMissedPenalty"
                     value={
+                      penalties &&
                       penalties.daysInAWeekMissed &&
                       penalties.daysInAWeekMissed.enabled
                         ? penalties.daysInAWeekMissed.daysInAWeekMissedPenalty
@@ -139,7 +146,9 @@ const Form3 = (props) => {
               onChange={props.handleChange}
               name="daysInAWeekLimitEnabled"
               checked={
-                penalties.daysInAWeekLimit && penalties.daysInAWeekLimit.enabled
+                penalties &&
+                penalties.daysInAWeekLimit &&
+                penalties.daysInAWeekLimit.enabled
                   ? penalties.daysInAWeekLimit.enabled
                   : false
               }
@@ -162,6 +171,7 @@ const Form3 = (props) => {
                     onChange={props.handleChange}
                     name="daysInAWeekLimitValue"
                     value={
+                      penalties &&
                       penalties.daysInAWeekLimit &&
                       penalties.daysInAWeekLimit.enabled
                         ? penalties.daysInAWeekLimit.daysInAWeekLimitValue
@@ -184,6 +194,7 @@ const Form3 = (props) => {
                     onChange={props.handleChange}
                     name="daysInAWeekLimitPenalty"
                     value={
+                      penalties &&
                       penalties.daysInAWeekLimit &&
                       penalties.daysInAWeekLimit.enabled
                         ? penalties.daysInAWeekLimit.daysInAWeekLimitPenalty

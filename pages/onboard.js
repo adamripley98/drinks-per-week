@@ -1,36 +1,48 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import useSWR from "swr";
 import Layout from "../components/layout";
 import Form1 from "../components/onboarding/Form1";
 import Form2 from "../components/onboarding/Form2";
 import Form3 from "../components/onboarding/Form3";
+import ProtectedPage from "../components/ProtectedPage";
+import { useUser } from "../utils/auth/useUser";
 
-class Onboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeTab: 1,
-      firstName: "",
-      lastName: "",
-      currentWeight: null,
-      upperWeight: null,
-      lowerWeight: null,
-      baselineDrinks: null,
-      addedDrinks: null,
-      drinkCarryOver: false,
-      penalties: {}
-    };
-    this.handleChange = this.handleChange.bind(this);
+const fetcher = (url, token) =>
+  fetch(url, {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json", token }),
+    credentials: "same-origin"
+  }).then((res) => {
+    console.log("post request done");
+    console.log(res.json());
+  });
+
+function Onboard() {
+  const [state, setState] = useState({
+    activeTab: 1,
+    firstName: "",
+    lastName: "",
+    currentWeight: null,
+    upperWeight: null,
+    lowerWeight: null,
+    baselineDrinks: null,
+    addedDrinks: null,
+    drinkCarryOver: false,
+    penalties: {}
+  });
+
+  function changeTab(direction) {
+    const { activeTab } = state;
+    setState({
+      ...state,
+      activeTab: activeTab + direction
+    });
   }
 
-  changeTab(direction) {
-    const { activeTab } = this.state;
-    this.setState({ activeTab: activeTab + direction });
-  }
-
-  handleChange(e) {
+  function handleChange(e) {
     // Special case for handling penalty values
     if (e.target.className.indexOf("penalty-input") !== -1) {
-      const penalties = { ...this.state.penalties };
+      const penalties = { ...state.penalties };
       let penaltyName;
       // for penalty value
       if (e.target.name.indexOf("Value") !== -1) {
@@ -46,11 +58,14 @@ class Onboard extends Component {
         );
       }
       penalties[penaltyName][e.target.name] = e.target.value;
-      this.setState({ penalties });
+      setState({
+        ...state,
+        penalties
+      });
     }
     // Special case for handling penalty checkboxes
     else if (e.target.className.indexOf("penalty") !== -1) {
-      const penalties = { ...this.state.penalties };
+      const penalties = { ...state.penalties };
       const name = e.target.name.substring(0, e.target.name.indexOf("Enabled"));
       if (penalties[name]) {
         penalties[name].enabled = e.target.checked;
@@ -59,59 +74,55 @@ class Onboard extends Component {
           enabled: e.target.checked
         };
       }
-      this.setState({ penalties });
+      setState({
+        ...state,
+        penalties
+      });
       // All other "normal" cases
     } else {
-      const change = {};
-      const value =
-        e.target.type === "checkbox" ? e.target.checked : e.target.value;
-      change[e.target.name] = value;
-      this.setState(change);
+      setState({
+        ...state,
+        [e.target.name]:
+          e.target.type === "checkbox" ? e.target.checked : e.target.value
+      });
     }
   }
 
-  submitOnboard() {
-    console.log("TODO: submit to backend", this.state);
+  function submitOnboard() {
+    console.log("TODO: submit to backend", state);
   }
 
-  showCorrectTab() {
-    const { activeTab } = this.state;
+  function showCorrectTab() {
+    const { activeTab } = state;
     if (activeTab === 1) {
-      return (
-        <Form1 handleChange={this.handleChange} onboardState={this.state} />
-      );
+      return <Form1 handleChange={handleChange} onboardState={state} />;
     }
     if (activeTab === 2) {
-      return (
-        <Form2 handleChange={this.handleChange} onboardState={this.state} />
-      );
+      return <Form2 handleChange={handleChange} onboardState={state} />;
     }
     if (activeTab === 3) {
-      return (
-        <Form3 handleChange={this.handleChange} onboardState={this.state} />
-      );
+      return <Form3 handleChange={handleChange} onboardState={state} />;
     }
-    // TODO
     return <Form1 />;
   }
 
-  showButtons() {
+  function showButtons() {
     return (
       <div className="flex justify-around">
-        {this.state.activeTab !== 1 ? (
+        {state.activeTab !== 1 ? (
           <button
             type="button"
             className="btn-purple btn-onboard mt-10 mr-2"
-            onClick={() => this.changeTab(-1)}
+            onClick={() => changeTab(-1)}
           >
             ← Previous
           </button>
         ) : null}
-        {this.state.activeTab !== 3 ? (
+        {state.activeTab !== 3 ? (
           <button
             type="button"
             className="btn-purple btn-onboard mt-10"
-            onClick={() => this.changeTab(1)}
+            onClick={() => changeTab(1)}
           >
             Next →
           </button>
@@ -119,7 +130,7 @@ class Onboard extends Component {
           <button
             type="button"
             className="btn-purple btn-onboard mt-10"
-            onClick={() => this.submitOnboard()}
+            onClick={() => submitOnboard()}
           >
             Submit
           </button>
@@ -128,9 +139,9 @@ class Onboard extends Component {
     );
   }
 
-  render() {
-    return (
-      <Layout>
+  return (
+    <Layout>
+      <ProtectedPage>
         <h1 className="text-3xl lg:text-4xl xl:text-5xl text-center">
           Welcome to DrinksPerWeek!
         </h1>
@@ -138,11 +149,11 @@ class Onboard extends Component {
           We just need a bit more information from you before you can get
           started.
         </p>
-        {this.showCorrectTab()}
-        {this.showButtons()}
-      </Layout>
-    );
-  }
+        {showCorrectTab()}
+        {showButtons()}
+      </ProtectedPage>
+    </Layout>
+  );
 }
 
 export default Onboard;

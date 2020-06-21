@@ -2,8 +2,6 @@ import useSWR from "swr";
 import Link from "next/link";
 import { useUser } from "../utils/auth/useUser";
 import LandingPage from "../components/LandingPage";
-import Nav from "../components/nav";
-import Footer from "../components/Footer";
 import Layout from "../components/layout";
 
 const fetcher = (url, token) =>
