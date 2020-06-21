@@ -21,7 +21,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <Nav />
-      <div>{children}</div>
+      <div className="my-10">{children}</div>
       <Footer />
     </div>
   );

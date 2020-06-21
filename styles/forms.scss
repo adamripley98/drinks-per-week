@@ -8,3 +8,28 @@
   background: $purple !important;
   color: #fff;
 }
+
+.info-button {
+  height: 1rem;
+  display: inline-flex;
+  margin-left: 1rem;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.penalty-1-inputs,
+.penalty-2-inputs,
+.penalty-3-inputs,
+.penalty-4-inputs {
+  display: none;
+}
+
+.penalty-1:checked ~ .penalty-1-inputs,
+.penalty-2:checked ~ .penalty-2-inputs,
+.penalty-3:checked ~ .penalty-3-inputs,
+.penalty-4:checked ~ .penalty-4-inputs {
+  display: inline-block;
+}
