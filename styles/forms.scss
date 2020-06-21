@@ -22,14 +22,12 @@
 
 .penalty-1-inputs,
 .penalty-2-inputs,
-.penalty-3-inputs,
-.penalty-4-inputs {
+.penalty-3-inputs {
   display: none;
 }
 
 .penalty-1:checked ~ .penalty-1-inputs,
 .penalty-2:checked ~ .penalty-2-inputs,
-.penalty-3:checked ~ .penalty-3-inputs,
-.penalty-4:checked ~ .penalty-4-inputs {
+.penalty-3:checked ~ .penalty-3-inputs {
   display: inline-block;
 }

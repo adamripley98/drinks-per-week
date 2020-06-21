@@ -19,6 +19,9 @@ const Form2 = (props) => {
                 id="grid-baseline"
                 type="number"
                 placeholder={0}
+                name="baselineDrinks"
+                onChange={props.handleChange}
+                value={props.onboardState.baselineDrinks}
               />
             </div>
             <div className="w-full md:w-1/2 px-3">
@@ -33,12 +36,21 @@ const Form2 = (props) => {
                 id="grid-additional-drinks"
                 type="number"
                 placeholder={1}
+                name="addedDrinks"
+                onChange={props.handleChange}
+                value={props.onboardState.addedDrinks}
               />
             </div>
           </div>
           <div className="md:flex md:items-center my-3">
             <label className="block text-gray-500 font-bold">
-              <input className="mr-2 leading-tight" type="checkbox" />
+              <input
+                className="mr-2 leading-tight"
+                onChange={props.handleChange}
+                name="drinkCarryOver"
+                checked={props.onboardState.drinkCarryOver}
+                type="checkbox"
+              />
               <span className="text-sm">
                 Allow drink carryover from week to week?
               </span>

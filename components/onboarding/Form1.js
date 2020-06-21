@@ -18,6 +18,9 @@ const Form1 = (props) => {
               id="grid-first-name"
               type="text"
               placeholder="Jane"
+              name="firstName"
+              onChange={props.handleChange}
+              value={props.onboardState.firstName}
             />
           </div>
           <div className="w-full md:w-1/2 px-3">
@@ -32,6 +35,9 @@ const Form1 = (props) => {
               id="grid-last-name"
               type="text"
               placeholder="Doe"
+              name="lastName"
+              onChange={props.handleChange}
+              value={props.onboardState.lastName}
             />
           </div>
         </div>
@@ -48,6 +54,9 @@ const Form1 = (props) => {
               id="grid-current-weight"
               type="number"
               placeholder="180"
+              name="currentWeight"
+              onChange={props.handleChange}
+              value={props.onboardState.currentWeight}
             />
           </div>
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -62,6 +71,9 @@ const Form1 = (props) => {
               id="grid-current-weight"
               type="number"
               placeholder="170"
+              name="lowerWeight"
+              onChange={props.handleChange}
+              value={props.onboardState.lowerWeight}
             />
           </div>
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -76,6 +88,9 @@ const Form1 = (props) => {
               id="grid-current-weight"
               type="number"
               placeholder="185"
+              name="upperWeight"
+              onChange={props.handleChange}
+              value={props.onboardState.upperWeight}
             />
           </div>
         </div>
