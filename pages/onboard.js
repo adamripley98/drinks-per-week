@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import Form1 from "../components/onboarding/Form1";
 import Form2 from "../components/onboarding/Form2";
@@ -8,7 +8,16 @@ import postRequest from "../utils/routes/post";
 import { USER_ONBOARDING } from "../utils/routes/routeNames";
 
 function Onboard() {
-  const { user } = useUser();
+  const { loadingUser, user } = useUser();
+
+  useEffect(() => {
+    if (!loadingUser) {
+      // You know that the user is loaded: either logged in or out!
+      console.log("u", user);
+    }
+    // You also have your firebase app initialized
+    // console.log(firebase);
+  }, [loadingUser, user]);
 
   const [state, setState] = useState({
     activeTab: 1,

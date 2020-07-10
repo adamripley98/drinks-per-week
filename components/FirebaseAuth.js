@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import cookie from "js-cookie";
-import { initFirebase, firebase } from "../utils/auth/initFirebase";
+import { firebase } from "../utils/auth/initFirebase";
 
 // Init the Firebase app.
-initFirebase();
+// initFirebase();
 
 const firebaseAuthConfig = {
   signInFlow: "popup",
@@ -20,7 +20,7 @@ const firebaseAuthConfig = {
   signInSuccessUrl: "/",
   credentialHelper: "none",
   callbacks: {
-    signInSuccessWithAuthResult: async ({ user }, redirectUrl) => {
+    signInSuccessWithAuthResult: async ({ user }) => {
       // xa is the access token, which can be retrieved through
       // firebase.auth().currentUser.getIdToken()
       const { uid, email, xa } = user;
@@ -31,6 +31,9 @@ const firebaseAuthConfig = {
       };
       cookie.set("auth", userData, {
         expires: 1
+      });
+      firebase.database().ref("TESTt/").set({
+        testing: `wee`
       });
     }
   }

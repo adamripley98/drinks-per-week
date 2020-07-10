@@ -1,8 +1,10 @@
 import useSWR from "swr";
 import Link from "next/link";
+import Router from "next/router";
 import { useUser } from "../utils/auth/useUser";
 import LandingPage from "../components/LandingPage";
 import Layout from "../components/layout";
+import { firebase } from "../utils/auth/initFirebase";
 
 const fetcher = (url, token) =>
   fetch(url, {
@@ -27,6 +29,19 @@ const Index = () => {
     );
   }
 
+  // If user doesn't exist in db (they are a new user) or they didn't complete onboard, set values for him and push to onboard flow
+  const userRef = firebase.database().ref(`/users/${user.id}`);
+  userRef.once("value").then((snapshot) => {
+    if (!snapshot.val() || !snapshot.val().onboardComplete) {
+      userRef.set({
+        email: user.email,
+        onboardComplete: false
+      });
+      Router.push("/onboard");
+    }
+  });
+
+  // return homepage for user
   return (
     <Layout>
       <div>
